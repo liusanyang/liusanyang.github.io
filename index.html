@@ -8,7 +8,7 @@
 
   <title>刘三羊区块链博客</title>
   <meta name="description" content="区块链老白和你一起学习区块链。">
-  <meta name="author" content="黎跃春">
+  <meta name="author" content="刘三羊">
 
   <meta name="keywords" content="区块链技术,区块链视频,区块链培训,solidity 中文,fabric 中文,hyperledger 中文"
   />
@@ -40,7 +40,7 @@
   <!-- 站点统计 -->
   <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
   </script>
-  <script>(function() {var _53code = document.createElement("script");_53code.src = "https://tb.53kf.com/code/code/10174862/1";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(_53code, s);})();</script>
+ <!--  <script>(function() {var _53code = document.createElement("script");_53code.src = "https://tb.53kf.com/code/code/10174862/1";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(_53code, s);})();</script> -->
   <!-- 百度统计 -->
   
   <script>
@@ -198,8 +198,50 @@
   <ol class="post-list">
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/05/15/golang-hashMap02/" title="访问 Golang Hashmap02">Golang Hashmap02</a></h2>
+      <p class="excerpt">密码学2######hash散列表下面我们来写一个简单的hash散列表，首先对上一节中的代码我们做一些改进，在这里我们声明一个结构体类型，作为几点数据的类型，然后对代码的参数进行一些修改。package LinkNodesimport (	"fmt")//用结构体做数据域的类型type DM struct {	K string	V string}//声明全局变量，保存头节点var head *Nodevar curr *Node //当前节点//声明节点类型type Node struct...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-05-15 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-05-15</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right"></span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/05/15/golang-hashMap02/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/05/15/golang-hashMap01/" title="访问 Golang Hashmap01">Golang Hashmap01</a></h2>
+      <p class="excerpt">密码学##古典密码学    古典密码编码方法归根结底主要有两种，即置换和代换。           把明文中的字母重新排列，字母本身不变，但其位置改变了，这样编成的密码称为置换密码。最简单的置换密码是把明文中的字母顺序倒过来，然后截成固定长度的字母组作为密文。    代换密码则是将明文中的字符替代成其他字符。##现代密码学    现代密码学研究信息从发端到收端的安全传输和安全存储，是研究“知己知彼”的一门科学。其核心是密码编码学和密码分析学。前者致力于建立难以被敌方或对手攻破的安全密码体制...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-05-15 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-05-15</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right"></span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/05/15/golang-hashMap01/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/04/27/golang-interview/" title="访问 Golang经典笔试题及答案（下篇）">Golang经典笔试题及答案（下篇）</a></h2>
-      <p class="excerpt">  整理：黎跃春  博客：http://liyuechun.org  官网：http://kongyixueyuan.com  备注：如有错误，请指正，不断更新迭代1. 下面代码能运行吗？为什么type Param map[string]interface{}type Show struct {	Param}func main1() {	s := new(Show)	s.Param["RMB"] = 10000}运行结果：panic: assignment to entry in nil ...&hellip;</p>
+      <p class="excerpt">1. 下面代码能运行吗？为什么type Param map[string]interface{}type Show struct {	Param}func main1() {	s := new(Show)	s.Param["RMB"] = 10000}运行结果：panic: assignment to entry in nil mapgoroutine 1 [running]:main.main()如上所示，运行过程中会发生异常，原因是因为字典Param的默认值为nil，当给字典nil增加...&hellip;</p>
       <div class="post-list__meta">        
         <time datetime="2018-04-27 00:00:00 +0800" class="post-list__meta--date date">
           <img src="/images/calendar.png" width="20px" /> 
@@ -220,7 +262,7 @@
     
     <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/04/24/golang-interview/" title="访问 Golang经典笔试题及答案（上篇）">Golang经典笔试题及答案（上篇）</a></h2>
-      <p class="excerpt">  整理：黎跃春博客：http://liyuechun.org官网：http://kongyixueyuan.com1. 写出下面代码输出内容package mainimport (	"fmt")func main() {	defer_call()}func defer_call() {	defer func() {		fmt.Println("打印前")	}()	defer func() {		fmt.Println("打印中")	}()	defer func() {		fmt.Prin...&hellip;</p>
+      <p class="excerpt">1. 写出下面代码输出内容package mainimport (	"fmt")func main() {	defer_call()}func defer_call() {	defer func() {		fmt.Println("打印前")	}()	defer func() {		fmt.Println("打印中")	}()	defer func() {		fmt.Println("打印后")	}()	panic("触发异常")}在这个案例中，触发异常这几个字打印的顺序其实是不确定的。d...&hellip;</p>
       <div class="post-list__meta">        
         <time datetime="2018-04-24 00:00:00 +0800" class="post-list__meta--date date">
           <img src="/images/calendar.png" width="20px" /> 
@@ -234,69 +276,6 @@
           </div>
           <div class = "post-list-small-mate">
           <a class="btn-border-small" href=/2018/04/24/golang-interview/>阅读全文 » </a>
-          </div>
-      </div>
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/04/18/eos-contract/" title="访问 第三篇 - EOS DAWN-V3.0.0 智能合约开发之Hello World">第三篇 - EOS DAWN-V3.0.0 智能合约开发之Hello World</a></h2>
-      <p class="excerpt">  作者：黎跃春 | 孔壹学院创始人视频网站：http://kongyixueyuan.com微信搜索「kongyixueyuan」添加莉莉微信申请进群黎跃春区块链博客：http://liyuechun.org不管是C、C++、Java还是任何其他语言，一般刚开始学习的时候，我们都会从HelloWorld开始，这篇文章主要讲解EOS DAWN-V3.0.0 智能合约开发之Hello World。在看这篇文章之前，请先阅读下面两篇入门文章。  第一篇 - 手把手教你理清EOS各种开发环境搭建...&hellip;</p>
-      <div class="post-list__meta">        
-        <time datetime="2018-04-18 00:00:00 +0800" class="post-list__meta--date date">
-          <img src="/images/calendar.png" width="20px" /> 
-          2018-04-18</time> 
-        <div class = "tag-img-icon">
-          <img src="/images/tag-icon.svg" width="20px" /> 
-        </div>
-        <a href="/tags">
-          <div class = "post-list-icon-mate">
-            <span class="post-list__meta--tags-right">EOS</span>
-          </div>
-          <div class = "post-list-small-mate">
-          <a class="btn-border-small" href=/2018/04/18/eos-contract/>阅读全文 » </a>
-          </div>
-      </div>
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/04/13/eos-contract/" title="访问 第二篇 - EOS Currency 合约案例">第二篇 - EOS Currency 合约案例</a></h2>
-      <p class="excerpt">                    主讲人：黎跃春        孔壹学院创始人              课程咨询，添加莉莉微信(kongyixueyuan)咨询切换到eos/build/programs/cleos路径下面。1. 钱包设置秘钥需要保存好，后面解锁时会用到。liyuechun:cleos yuechunli$ ./cleos wallet createCreating wallet: defaultSave password to use in the future ...&hellip;</p>
-      <div class="post-list__meta">        
-        <time datetime="2018-04-13 00:00:00 +0800" class="post-list__meta--date date">
-          <img src="/images/calendar.png" width="20px" /> 
-          2018-04-13</time> 
-        <div class = "tag-img-icon">
-          <img src="/images/tag-icon.svg" width="20px" /> 
-        </div>
-        <a href="/tags">
-          <div class = "post-list-icon-mate">
-            <span class="post-list__meta--tags-right">EOS</span>
-          </div>
-          <div class = "post-list-small-mate">
-          <a class="btn-border-small" href=/2018/04/13/eos-contract/>阅读全文 » </a>
-          </div>
-      </div>
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/04/04/eos-dev/" title="访问 第一篇 - 手把手教你理清EOS各种开发环境搭建来龙去脉">第一篇 - 手把手教你理清EOS各种开发环境搭建来龙去脉</a></h2>
-      <p class="excerpt">                    主讲人：黎跃春        孔壹学院创始人              课程咨询，添加莉莉微信(kongyixueyuan)咨询目前来讲，任何学习EOS相关技术的资料都来自https://github.com/EOSIO/eos，可能大家在搭建EOS开发环境的过程中，会很迷茫，网上资料都很乱，自己也理不清头绪，不知如何下手。在这里，春哥将一步步为你揭开层层面纱。1. 硬件软件环境因为EOS的版本太多，所以你需要先知道如何查看EOS对应版本的相关资料。...&hellip;</p>
-      <div class="post-list__meta">        
-        <time datetime="2018-04-04 00:00:00 +0800" class="post-list__meta--date date">
-          <img src="/images/calendar.png" width="20px" /> 
-          2018-04-04</time> 
-        <div class = "tag-img-icon">
-          <img src="/images/tag-icon.svg" width="20px" /> 
-        </div>
-        <a href="/tags">
-          <div class = "post-list-icon-mate">
-            <span class="post-list__meta--tags-right">EOS</span>
-          </div>
-          <div class = "post-list-small-mate">
-          <a class="btn-border-small" href=/2018/04/04/eos-dev/>阅读全文 » </a>
           </div>
       </div>
       <hr class="post-list__divider" />

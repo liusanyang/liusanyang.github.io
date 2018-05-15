@@ -1,0 +1,192 @@
+<h1 id="密码学2">密码学2</h1>
+<p>######hash散列表
+下面我们来写一个简单的hash散列表，首先对上一节中的代码我们做一些改进，在这里我们声明一个结构体类型，作为几点数据的类型，然后对代码的参数进行一些修改。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>package LinkNodes
+
+import (
+	"fmt"
+)
+
+//用结构体做数据域的类型
+type DM struct {
+	K string
+	V string
+}
+
+//声明全局变量，保存头节点
+var head *Node
+var curr *Node //当前节点
+
+//声明节点类型
+type Node struct {
+	//数据域
+	Data DM
+	//地址域
+	NextNode *Node
+}
+
+//创建头节点
+func CreateHeadNode(k string, v string) *Node {
+	var node *Node = new(Node)
+	//	设置数据结构体中的数据域
+	node.Data.K = k
+	node.Data.V = v
+	//设置地址域
+	node.NextNode = nil
+	//保存头节点
+	head = node
+	curr = node
+
+	return node
+}
+
+//在指定的节点（curr）添加新节点
+func AddNode(k string, v string, curr *Node) *Node {
+	var newNode *Node = new(Node)
+	//设置新节点重的数据域
+	newNode.Data.K = k
+	newNode.Data.V = v
+	//设置地址域
+	newNode.NextNode = nil
+	//挂接节点
+	curr.NextNode = newNode
+	curr = newNode
+
+	return newNode
+}
+
+//在指定的节点后遍历链表
+func ShowNodes(n *Node) {
+	var node = n
+	for {
+		if node.NextNode == nil {
+			fmt.Println(node.Data)
+			break
+		} else {
+			fmt.Println(node.Data)
+			node = node.NextNode
+		}
+	}
+}
+
+//计算节点的个数
+func NodeCnt() int {
+	var cnt = 1
+	var node = head
+	for {
+		if node.NextNode == nil {
+			break
+		} else {
+			node = node.NextNode
+			cnt++
+		}
+	}
+	return cnt
+}        
+</code></pre>
+</div>
+
+<p>接下来我们来创建一个新的文件夹HashMp,然后创建新的文件MyHashMap.go，在这里我们声明一个长度为16的数组，如果想改成32或者64等其他长度的数组，要对散列算法进行更改。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>package HashMp
+
+import (
+	"MyHashMap/LinkNodes"
+	"fmt"
+)
+
+//声明全局数组
+var bultArr [16]*LinkNodes.Node
+
+//给数组初始化
+func CreateBulet() {
+	var arr = [16]*LinkNodes.Node{}
+	for i := 0; i &lt; 16; i++ {
+		arr[i] = LinkNodes.CreateHeadNode("头节点", "头节点")
+	}
+	bultArr = arr
+}
+
+//将key转换成数组下标的散列算法
+func HashCode(key string) int {
+	var index int = 0
+	index = int(key[0])
+	for k := 0; k &lt; len(key); k++ {
+		//1103515245是十六位的hash因子散列值
+		index *= (1103515245 + int(key[k]))
+	}
+	index &gt;&gt;= 27
+	index &amp;= 16 - 1
+
+	return index
+}
+
+//向数组中添加健值对
+func AddKeyValue(k string, v string) {
+	//计算建所对应的木桶下表
+	var pos = HashCode(k)
+	//获得木桶数组
+	var head *LinkNodes.Node = bultArr[pos]
+	//向指定下标的头节点添加节点
+	LinkNodes.AddNode(k, v, head)
+}
+
+//获取数据
+func GetValueByKey(k string) string {
+	var pos = HashCode(k)
+	var head *LinkNodes.Node = bultArr[pos]
+
+	//通过头节点遍历列表
+	//LinkNodes.ShowNodes(head)
+
+	//查找对应下标下的链表，判断在key域节点中的key一致时打印
+	for {
+		if head.Data.K == k {
+			fmt.Println(head.Data.V)
+			break
+		} else {
+			head = head.NextNode
+			if head.NextNode == nil {
+
+			}
+	}
+}
+return ""
+ }	
+</code></pre>
+</div>
+
+<p>在主函数中使用方法：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>package main
+
+import (
+	"MyHashMap/HashMp"
+	"fmt"
+)
+
+
+func main()  {
+	fmt.Println("Hello World!")
+
+	//测试hashMp八下的散列因子是否平均分布
+	//fmt.Println(HashMp.HashCode("三羊"))
+
+	HashMp.CreateBulet()
+
+	HashMp.AddKeyValue("abc","hello")
+	HashMp.AddKeyValue("bcd","world")
+
+	HashMp.GetValueByKey("bcd")
+}  
+</code></pre>
+</div>
+
+<p>输出内容为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> Hello World!
+ world
+</code></pre>
+</div>
+

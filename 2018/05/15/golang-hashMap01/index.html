@@ -1,0 +1,218 @@
+<h1 id="密码学">密码学</h1>
+<p>##古典密码学
+    古典密码编码方法归根结底主要有两种，即置换和代换。       <br />
+    把明文中的字母重新排列，字母本身不变，但其位置改变了，这样编成的密码称为置换密码。最简单的置换密码是把明文中的字母顺序倒过来，然后截成固定长度的字母组作为密文。
+    代换密码则是将明文中的字符替代成其他字符。
+##现代密码学
+    现代密码学研究信息从发端到收端的安全传输和安全存储，是研究“知己知彼”的一门科学。其核心是密码编码学和密码分析学。前者致力于建立难以被敌方或对手攻破的安全密码体制，即“知己”；后者则力图破译敌方或对手已有的密码体制，即“知彼”
+######hash散列原理
+    哈希表（也叫散列表），是根据关键码值(Key value)而直接进行访问的数据结构。也就是说，它通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。这个映射函数叫做散列函数，存放记录的数组叫做散列表。</p>
+
+<p>数据结构链表
+下面我们来写一个单向的简单链表，首先我们要声明一个头节点是为了保存头节点信息，同理声明一个当前节点保存当前节点的信息，再然后声明一个节点类型的结构体，里面有两个变量，一个是节点的存储数据，数据类型为字符串，另一个是下一个节点的地址数据类型节点的指针类型。(package LinkNodes的内容写在LinkNodes文件夹下的node.go文件中)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    package LinkNodes
+
+    import "fmt"
+    
+    //声明全局变量，保存头节点
+    var head *Node
+    var curr *Node //当前节点
+    
+    //声明节点类型
+    type Node struct {
+    	//数据域
+    	Data string
+    	//地址域
+    	NextNode *Node
+    }
+</code></pre>
+</div>
+
+<p>接下来我们首先创建一个头节点，需要注意的是在设置完数据域和地址域后，要把头节点信息赋予前面声明的全局变量head，这个head变量在后面很多方法里我们都需要用到。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>   //创建头节点
+    func CreateHeadNode(data string) *Node  {
+    	var node *Node = new(Node)
+    	//	设置数据结构体中的数据域
+    	node.Data = data
+    	//设置地址域
+    	node.NextNode = nil
+    	//保存头节点
+    	head = node
+    	curr = node
+    
+    	return node
+    }
+</code></pre>
+</div>
+
+<p>接下来我们来创建多种操作链表的方法：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>   //添加新节点
+    func AddNode(data string) *Node {
+    	var newNode *Node = new(Node)
+    	//设置新节点重的数据域
+    	newNode.Data = data
+    	//设置地址域
+    	newNode.NextNode = nil
+    	//挂接节点
+    	curr.NextNode = newNode
+    	curr = newNode
+    
+    	return newNode
+    }
+    
+    //遍历链表
+    func ShowNodes() {
+    	var node = head
+    	for {
+    		if node.NextNode == nil {
+    			fmt.Println(node.Data)
+    			break
+    		} else {
+    			fmt.Println(node.Data)
+    			node = node.NextNode
+    		}
+    	}
+    }
+    
+    //计算节点的个数
+    func NodeCnt() int {
+    	var cnt = 1
+    	var node = head
+    	for {
+    		if node.NextNode == nil {
+    			break
+    		} else {
+    			node = node.NextNode
+    			cnt++
+    		}
+    	}
+    	return cnt
+    }
+    
+    //插入节点
+    func InsertNodeByIndex(index int, data string) *Node {
+    	if index == 0 {
+    		//添加新的头节点
+    		var node *Node = new(Node)
+    		node.Data = data
+    		head = node
+    	} else if index &gt; NodeCnt()-1 {
+    		//添加节点
+    		AddNode(data)
+    	} else {
+    		//中间插入节点
+    		var n = head
+    		for i := 0; i &lt; index-1; i++ {
+    			n = n.NextNode
+    		}
+    
+    		var newNode *Node = new(Node)
+    		newNode.Data = data
+    		newNode.NextNode = n.NextNode
+    		n.NextNode = newNode
+    	}
+    
+    	return nil
+    }
+    
+    //删除节点
+    func DeleteNodeByIndex(index int) {
+    	var node = head
+    	if index == 0 {
+    		//删除头节点，第二个节点为头节点
+    		head = node.NextNode
+    	} else {
+    		for i := 0; i &lt; index; i++ {
+    			node = node.NextNode
+    		}
+    		node.NextNode = node.NextNode.NextNode
+    	}
+    }
+    
+    //修改指定下标的节点内容
+    func UpdateNodeByIndex(index int, data string) {
+    	var node = head
+    	if index == 0 {
+    		head.Data = data
+    	} else {
+    		for i := 0; i &lt; index; i++ {
+    			node = node.NextNode
+    		}
+    		node.Data = data
+    	}
+ }
+</code></pre>
+</div>
+
+<p>接下来我们在主函数中使用这些方法：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>package main
+
+import (
+	"MyHashMap_简单链表/LinkNodes"
+	"fmt"
+)
+
+
+func main()  {
+	fmt.Println("Hello World!")
+
+	LinkNodes.CreateHeadNode("头节点")
+	LinkNodes.AddNode("第一节点")
+	LinkNodes.AddNode("第二节点")
+	LinkNodes.AddNode("第三节点")
+	LinkNodes.AddNode("第四节点")
+
+	LinkNodes.ShowNodes()
+    	fmt.Println("共有",LinkNodes.NodeCnt(),"个节点")
+
+	fmt.Println("--------------------------------")
+	//插入新节点
+	LinkNodes.InsertNodeByIndex(2,"abc")
+	LinkNodes.ShowNodes()
+	//删除节点
+	fmt.Println("--------------------------------")
+	LinkNodes.DeleteNodeByIndex(3)
+	LinkNodes.ShowNodes()
+	//修改节点内容
+	fmt.Println("--------------------------------")
+	LinkNodes.UpdateNodeByIndex(3,"abc")
+	LinkNodes.ShowNodes()
+}
+</code></pre>
+</div>
+
+<p>输出内容为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Hello World!
+头节点
+第一节点
+第二节点
+第三节点
+第四节点
+共有 5 个节点
+--------------------------------
+头节点
+第一节点
+abc
+第二节点
+第三节点
+第四节点
+--------------------------------
+头节点
+第一节点
+第二节点
+第三节点
+第四节点
+--------------------------------
+头节点
+第一节点
+第二节点
+abc
+第四节点
+</code></pre>
+</div>
+
